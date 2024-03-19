@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/fillStatus', (req, res) => {
-    autoMateScript(req.body)
+app.post('/fillStatus', async (req, res) => {
+   const data = await autoMateScript(req.body)
     res.send('status update sucessfuly')
 })
 

@@ -5,7 +5,7 @@ const autoMateScript = async ({ email, pass, date, text }) => {
     try {
         // Launch a headless browser
         const browser = await puppeteer.launch({
-            headless: false
+            headless: true
         });
 
         // Open a new page
@@ -37,6 +37,7 @@ const autoMateScript = async ({ email, pass, date, text }) => {
         count++
         // Close the browser
         await browser.close();
+        return browser
     } catch (error) {
         console.log("Error"+error)
     }

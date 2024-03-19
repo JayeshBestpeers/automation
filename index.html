@@ -11474,7 +11474,6 @@ ul.tagit {
             const pass = document.getElementById('pass').value
             const text = document.getElementById('text').value
             const date = document.getElementById('date').value
-            fetch(`/fillStatus`).then((res)=>console.log(res)).catch(err=>console.error('errpr'+err))
             fetch(`/fillStatus`, {
                 method: "POST",
                 mode: "cors",
