@@ -11437,7 +11437,7 @@ ul.tagit {
     <input type="date" name="" id="date">
     
     <button onclick="submit()">Submit</button> -->
-    <div class="log-in-form">
+    <div class="log-in-form" id="body">
         <h2>Update Status</h2>
         <div class="new_employee" id="new_employee"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="op3gQbMmsgzBNuOUO8a0+P6hv7Doj8qHjFbI6DauqZc74LliJ8ZukVK99U+2Wmb59Y70I2+lyzeo3fNT26cseg==">
           <div class="email-custom">
@@ -11467,6 +11467,7 @@ ul.tagit {
             <button name="commit" onclick="submit()" class="btn log-in-btn btn-success">Submit</button>
           </div>
         </div></div>
+        <img id="image" src="" style="display: none;"/>
     <script>
         console.log('run')
         function submit(){
@@ -11483,7 +11484,15 @@ ul.tagit {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({email,pass,text,date}), // body data type must match "Content-Type" header
-            });
+            }).then((res)=>res.arrayBuffer()).then(buffer => {
+                const image = new Blob([buffer], { type: 'image/jpeg' });
+                const imageUrl = URL.createObjectURL(image);
+                document.getElementById('image').src = imageUrl;
+                document.getElementById('image').style.display = 'block';
+                document.getElementById('body').style.display = 'none';
+            }).catch((error)=>{
+                console.log(error)
+            })
         }
     </script>
 </body>

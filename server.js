@@ -10,8 +10,12 @@ app.get('/', (req, res) => {
 
 
 app.post('/fillStatus', async (req, res) => {
-   const data = await autoMateScript(req.body)
-    res.send('status update sucessfuly')
+    const data = await autoMateScript(req.body)
+    if(data.error){
+        res.send('Error: ' + data.error)
+    }else{
+        res.send(data.img)
+    }
 })
 
 app.listen(3000, () => {
