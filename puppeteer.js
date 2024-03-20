@@ -31,7 +31,7 @@ const autoMateScript = async ({ email, pass, date, text }) => {
         await page.select("#daily_status_update_task_updates_attributes_0_status", "Done");
         await page.type("#daily_status_update_task_updates_attributes_0_task", text);
 
-        // await page.click("#daily_status_update_form > div:nth-child(5) > div.form-group.text-center.footer > input.add-daily-status-btn");
+        await page.click("#daily_status_update_form > div:nth-child(5) > div.form-group.text-center.footer > input.add-daily-status-btn");
 
         // You can optionally take a screenshot after form submission
         const img = await page.screenshot({ fullPage: true, });
